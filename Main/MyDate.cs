@@ -2,11 +2,11 @@
 {
     internal class MyDate
     {
-        public int Year { set; get; }
-        public sbyte Month { set; get; }
-        public sbyte Day { set; get; }  
-        public sbyte Hours { set; get; }
-        public sbyte Minutes { set; get; }
+        public int Year {protected set; get; }
+        public sbyte Month {protected set; get; }
+        public sbyte Day {protected set; get; }  
+        public sbyte Hours {protected set; get; }
+        public sbyte Minutes {protected set; get; }
 
         public MyDate()
         {
@@ -28,13 +28,13 @@
             Minutes = minutes;
         }
 
-        public MyDate(MyDate date)
+        public MyDate(MyDate other)
         {
-            Year = date.Year;
-            Month = date.Month;
-            Day = date.Day;
-            Hours = date.Hours;
-            Minutes = date.Minutes;
+            Year = other.Year;
+            Month = other.Month;
+            Day = other.Day;
+            Hours = other.Hours;
+            Minutes = other.Minutes;
         }
 
         public static byte DaysInMonth(int month)

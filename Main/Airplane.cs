@@ -2,10 +2,10 @@
 {
     internal class Airplane
     {
-        public string StartCity { set; get; }
-        public string FinishCity { set; get; }
-        public MyDate StartDate { set; get; }
-        public MyDate FinishDate { set; get;}
+        public string StartCity {protected set; get; }
+        public string FinishCity {protected set; get; }
+        public MyDate StartDate {protected set; get; }
+        public MyDate FinishDate {protected set; get;}
 
         public Airplane()
         {
@@ -15,20 +15,20 @@
             FinishDate = new MyDate();
         }
 
-        public Airplane(string startCity, string finishCity, MyDate startDate, MyDate finishDate)
-        {
-            StartCity = startCity;
-            FinishCity = finishCity;
-            StartDate = startDate;
-            FinishDate = finishDate;
-        }
-
         public Airplane(MyDate startDate, MyDate finishDate)
         {
             StartCity = "";
             FinishCity = "";
             StartDate = startDate;
             FinishDate = finishDate;
+        }
+
+        public Airplane(Airplane other)
+        {
+            StartCity = other.StartCity;
+            FinishCity = other.FinishCity;
+            StartDate = other.StartDate;
+            FinishDate = other.FinishDate;
         }
 
         public int GetTotalTime()
@@ -40,7 +40,8 @@
             int hours = FinishDate.Hours - StartDate.Hours;
             int minutes = FinishDate.Minutes - StartDate.Minutes;
 
-            return (months * MyDate.DaysInMonth(StartDate.Month) + days) * 1440 + hours * 60 + minutes;
+            return (months * MyDate.DaysInMonth(StartDate.Month) + days) *
+                1440 + hours * 60 + minutes;
         }
 
         public bool IsArrivingToday()
